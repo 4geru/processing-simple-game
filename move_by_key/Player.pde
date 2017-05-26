@@ -7,10 +7,12 @@ class Player {
   void display() { 
     x = (checkWidth(x, r) != 0 ? checkWidth(x, r) : x + sx * sp / 5);
     y = (checkHeight(y, r) != 0 ? checkHeight(y, r) : y + sy * sp / 5);
-    
+    fill(#AAAAAA);
+    noStroke();
     ellipse(x, y, this.r, this.r); 
     if(this.sx != 0 && !pressed)this.sx += dx * -1 / 2;
     if(this.sy != 0 && !pressed)this.sy += dy * -1 / 2;
+    noFill();
   }
   float checkHeight(float y,float r){
     if(y < r/2){ sy = 0; dy = 0; return r/2; } // attach up
@@ -22,6 +24,8 @@ class Player {
     if(x > width - r/2){ sx = 0; dx = 0; return width - r/2; }// attach right
     return 0;
   }
+  float getX(){ return x;}
+  float getY(){ return y;}
   void setSize(float r){ this.r = r; }
   void up()   { sy --; dy = -1; }
   void down() { sy ++; dy = 1; }
